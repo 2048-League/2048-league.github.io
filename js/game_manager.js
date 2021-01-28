@@ -83,6 +83,7 @@ GameManager.prototype.addRandomTile = function () {
 
 // Sends the updated grid to the actuator
 GameManager.prototype.actuate = function () {
+  var self = this;
   if (this.storageManager.getBestScore() < this.score) {
     this.storageManager.setBestScore(this.score);
   }
@@ -101,7 +102,7 @@ GameManager.prototype.actuate = function () {
         localStorage.page_available = Date.now();
       }
       if(e.key == "page_available"){
-        this.restart();
+        self.restart();
       }
     };
     window.addEventListener('storage', onLocalStorageEvent, false);  
