@@ -95,26 +95,29 @@ GameManager.prototype.actuate = function () {
   } else {
     this.storageManager.setGameState(this.serialize());
   }
-
+  var open = 0;
   localStorage.openpages = Date.now();
     var onLocalStorageEvent = function(e){
       if(e.key == "openpages"){
         localStorage.page_available = Date.now();
       }
       if(e.key == "page_available"){
-        this.storageManager.clearGameState();
+        open = 1;
+        self.restart();
       }
     };
     window.addEventListener('storage', onLocalStorageEvent, false);  
   
 
-  this.actuator.actuate(this.grid, {
+  if(!open) {
+    this.actuator.actuate(this.grid, {
     score:      this.score,
     over:       this.over,
     won:        this.won,
     bestScore:  this.storageManager.getBestScore(),
     terminated: this.isGameTerminated()
   });
+  }
 
 };
 
