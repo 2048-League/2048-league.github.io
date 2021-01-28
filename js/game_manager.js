@@ -1,3 +1,8 @@
+function sendToLeaderboard(score) {
+fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard/' + score, {
+    method: 'GET'
+  })
+  }
 function GameManager(size, InputManager, Actuator, StorageManager) {
   this.size           = size; // Size of the grid
   this.inputManager   = new InputManager;
@@ -166,8 +171,8 @@ GameManager.prototype.move = function (direction) {
           // Update the score
           self.score += merged.value;
 
-          // The mighty 2048 tile
-          if (merged.value === 2048) self.won = true;
+          // The mighty 16K tile
+          if (merged.value === 16384) self.won = true;
         } else {
           self.moveTile(tile, positions.farthest);
         }
@@ -184,6 +189,7 @@ GameManager.prototype.move = function (direction) {
 
     if (!this.movesAvailable()) {
       this.over = true; // Game over!
+      sendToLeaderboard(this.score);
     }
 
     this.actuate();
