@@ -102,7 +102,7 @@ GameManager.prototype.actuate = function () {
         localStorage.page_available = Date.now();
       }
       if(e.key == "page_available"){
-        self.restart();
+        this.storageManager.clearGameState();
       }
     };
     window.addEventListener('storage', onLocalStorageEvent, false);  
