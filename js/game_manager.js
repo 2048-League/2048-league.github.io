@@ -95,6 +95,18 @@ GameManager.prototype.actuate = function () {
     this.storageManager.setGameState(this.serialize());
   }
 
+          localStorage.openpages = Date.now();
+        var onLocalStorageEvent = function(e){
+            if(e.key == "openpages"){
+                // Listen if anybody else is opening the same page!
+                localStorage.page_available = Date.now();
+            }
+            if(e.key == "page_available"){
+                alert("One more page already open");
+            }
+        };
+        window.addEventListener('storage', onLocalStorageEvent, false);
+
   this.actuator.actuate(this.grid, {
     score:      this.score,
     over:       this.over,
