@@ -403,10 +403,10 @@ hr {
       .tile.tile-2048 .tile-inner {
         font-size: 15px; } }        
   .tile.tile-16384 .tile-inner {
-    color: #4e310a07;
+    color: #f9f6f2;
     background: #49f007;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.55556), inset 0 0 0 1px rgba(255, 255, 255, 0.33333);
-    font-size: 35px; }
+    font-size: 30px; }
     @media screen and (max-width: 520px) {
       .tile.tile-2048 .tile-inner {
         font-size: 15px; } }                
