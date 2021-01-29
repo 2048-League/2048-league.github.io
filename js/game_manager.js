@@ -11,6 +11,25 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
 
   this.setup();
+  var self = this;
+  localStorage.tabCheat = 0;
+  localStorage.openpages = Date.now();
+    var onLocalStorageEvent = function(e){
+      if(e.key == "openpages"){
+        localStorage.page_available = Date.now();
+      }
+      if(e.key == "page_available"){
+        localStorage.tabCheat = 1;
+        self.restart();
+      }
+    };
+  window.addEventListener('storage', onLocalStorageEvent, false);  
+  setInterval(function() {
+    if(parseInt(localStorage.tabCheat)) {
+      self.restart();
+      localStorage.tabCheat = 0;
+    }
+  }, 1000);
 }
 
 GameManager.prototype.log = function () {
@@ -94,30 +113,15 @@ GameManager.prototype.actuate = function () {
     this.storageManager.clearGameState();
   } else {
     this.storageManager.setGameState(this.serialize());
-  }
-  var open = 0;
-  localStorage.openpages = Date.now();
-    var onLocalStorageEvent = function(e){
-      if(e.key == "openpages"){
-        localStorage.page_available = Date.now();
-      }
-      if(e.key == "page_available"){
-        open = 1;
-        self.restart();
-      }
-    };
-    window.addEventListener('storage', onLocalStorageEvent, false);  
-  
+  }  
 
-  if(!open) {
-    this.actuator.actuate(this.grid, {
-    score:      this.score,
-    over:       this.over,
-    won:        this.won,
-    bestScore:  this.storageManager.getBestScore(),
-    terminated: this.isGameTerminated()
+  this.actuator.actuate(this.grid, {
+  score:      this.score,
+  over:       this.over,
+  won:        this.won,
+  bestScore:  this.storageManager.getBestScore(),
+  terminated: this.isGameTerminated()
   });
-  }
 
 };
 

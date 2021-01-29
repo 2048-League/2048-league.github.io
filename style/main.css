@@ -394,21 +394,21 @@ hr {
         font-size: 15px; } }
   .tile.tile-4096 .tile-inner {
     color: #f9f6f2;
-    background: #2fcf29;
+    background: #9e29cf;
     font-size: 35px; }
     @media screen and (max-width: 520px) {
       .tile.tile-4096 .tile-inner {
         font-size: 15px; } }
   .tile.tile-8192 .tile-inner {
     color: #f9f6f2;
-    background: #2CB409;
+    background: #611980;
     font-size: 35px; }
     @media screen and (max-width: 520px) {
       .tile.tile-8192 .tile-inner {
         font-size: 15px; } }        
   .tile.tile-16384 .tile-inner {
     color: #f9f6f2;
-    background: #1E7806;
+    background: #3a0f4c;
     font-size: 30px; }
     @media screen and (max-width: 520px) {
       .tile.tile-16384 .tile-inner {
