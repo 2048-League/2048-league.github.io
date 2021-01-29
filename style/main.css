@@ -22,6 +22,12 @@ h1.title {
   display: block;
   float: left; }
 
+.logo {
+  width: 300px;
+  position: relative;
+  top: -20px;
+}
+
 @-webkit-keyframes move-up {
   0% {
     top: 25px;
