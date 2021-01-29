@@ -14,3 +14,6 @@ fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
     4. ${body[3].score} at ${formatDate(body[3].time)}<br>
     5. ${body[4].score} at ${formatDate(body[4].time)}`
 });
+
+
+// test
