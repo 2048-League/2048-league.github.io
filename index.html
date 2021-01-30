@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>2048</title>
+  <title>2048 League</title>
 
   <link href="style/main.css" rel="stylesheet" type="text/css">
   <link rel="shortcut icon" href="favicon.ico">
@@ -30,7 +30,11 @@
       <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
       <a class="restart-button">New Game</a>
     </div>
-
+    <hr>
+    <h2>Leaderboard</h2>
+    <hr>
+    <div id="leaderboardText">
+    </div>
     <div class="game-container">
       <div class="game-message">
         <p></p>
@@ -75,11 +79,6 @@
     <p class="game-explanation">
       <strong class="important">How to play:</strong> Use your <strong>arrow keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong>
     </p>
-    <hr>
-    <h2>Leaderboard</h2>
-    <hr>
-    <div class="leaderboard" id="leaderboardText">
-    </div>
   </div>
   <script src="js/leaderboard.js"></script>
   <script src="js/bind_polyfill.js"></script>
