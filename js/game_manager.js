@@ -33,8 +33,12 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 }
 
 GameManager.prototype.log = function () {
-  fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard/' + this.score, {
-    method: 'GET'
+  fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ "score": this.score, "token": localStorage.token, "username": localStorage.username})
   });
 };
 

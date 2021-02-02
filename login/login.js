@@ -6,12 +6,14 @@ function login() {
   },
   body: JSON.stringify({ "username": document.getElementById('username').value, "password": document.getElementById('password').value})
   })
-  .then(res => res.text())
+  .then(res => res.json())
   .then(res => {
-    if(res == 'Success!') {
+    if(res.token) {
+    localStorage.setItem('token', res.token);
+    localStorage.setItem('username', document.getElementById('username').value);
       window.location = '../';
     } else {
-      document.getElementById('error').innerHTML = res;
+      document.getElementById('error').innerHTML = res.error;
     }
   });
 }

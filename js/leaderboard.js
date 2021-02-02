@@ -8,10 +8,8 @@ fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
  })
   .then(res => res.json())
   .then(body => {
-    document.getElementById('leaderboardText').innerHTML = `1. ${body[0].score} at ${formatDate(body[0].time)}<br>
-    2. ${body[1].score} at ${formatDate(body[1].time)}<br>
-    3. ${body[2].score} at ${formatDate(body[2].time)}<br>
-    4. ${body[3].score} at ${formatDate(body[3].time)}<br>
-    5. ${body[4].score} at ${formatDate(body[4].time)}`
+    for(var i = 0; i < 10; i++) {
+    document.getElementById('leaderboard' + (i + 1)).innerHTML = body[i] ? body[i].score + ' - ' + body[i].username : '';
+    }
 });
 
