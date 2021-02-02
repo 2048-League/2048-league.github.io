@@ -1,1 +1,1 @@
-document.getElementById("username").value = localStorage.getItem("username");
+document.getElementById("username").value = localStorage.getBestScore();
