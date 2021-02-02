@@ -18,9 +18,11 @@
 </head>
 <body>
   <div id="nologin">
-    <h1 class="centered">You need to be logged in to play.</h1>
+    <div class="centered">
+    <h1>You need to be logged in to play.</h1>
     <button class="loginbutton button" onclick="window.location.replace('../login')">Log in</button>
     <button class="signupbutton button" onclick="window.location.replace('../signup')">Sign up</button>
+    </div>
   </div>
   <div class="container" style="visibility: hidden">
     <div class="heading">
@@ -32,37 +34,37 @@
     </div>
     <div id="leaderboardbox">
         <div id="leaderboard"> </div>
-        <div class="leaderboardtile" style="color: #f9f6f2; font-size: 22px; background: #deba07">1</div>
+        <div class="leaderboardtile" id="rank1" style="color: #f9f6f2; font-size: 22px; background: #deba07">1</div>
         <div class="leaderboardtile" id="leaderboard1" style="margin-left:6px; width:200px;"></div>
         <br><br>
-        <div class="leaderboardtile" style="color: #f9f6f2; font-size: 22px; background: #b88506">2</div>
+        <div class="leaderboardtile" id="rank2" style="color: #f9f6f2; font-size: 22px; background: #c7c2a7">2</div>
         <div class="leaderboardtile" id="leaderboard2" style="margin-left:6px; width:200px"></div>
         <br><br>
-        <div class="leaderboardtile" style="color: #f9f6f2; font-size: 22px; background: #c7c2a7">3</div>
+        <div class="leaderboardtile" id="rank3" style="color: #f9f6f2; font-size: 22px; background: #b88506">3</div>
         <div class="leaderboardtile" id="leaderboard3" style="margin-left:6px; width:200px"></div>
         <br><br>
-        <div class="leaderboardtile" style="color: #f9f6f2; font-size: 22px; background: #000">4</div>
+        <div class="leaderboardtile" id="rank4" style="color: #f9f6f2; font-size: 22px; background: #000">4</div>
         <div class="leaderboardtile" id="leaderboard4" style="margin-left:6px; width:200px"></div>
         <br><br>
-        <div class="leaderboardtile" style="color: #f9f6f2; font-size: 22px; background: #000">5</div>
+        <div class="leaderboardtile" id="rank5" style="color: #f9f6f2; font-size: 22px; background: #000">5</div>
         <div class="leaderboardtile" id="leaderboard5" style="margin-left:6px; width:200px"></div>
         <br><br>
-        <div class="leaderboardtile" style="color: #f9f6f2; font-size: 22px; background: #000">6</div>
+        <div class="leaderboardtile" id="rank6" style="color: #f9f6f2; font-size: 22px; background: #000">6</div>
         <div class="leaderboardtile" id="leaderboard6" style="margin-left:6px; width:200px"></div>
         <br><br>
-        <div class="leaderboardtile" style="color: #f9f6f2; font-size: 22px; background: #000">7</div>
+        <div class="leaderboardtile" id="rank7" style="color: #f9f6f2; font-size: 22px; background: #000">7</div>
         <div class="leaderboardtile" id="leaderboard7" style="margin-left:6px; width:200px"></div>
         <br><br>
-        <div class="leaderboardtile" style="color: #f9f6f2; font-size: 22px; background: #000">8</div>
+        <div class="leaderboardtile" id="rank8" style="color: #f9f6f2; font-size: 22px; background: #000">8</div>
         <div class="leaderboardtile" id="leaderboard8" style="margin-left:6px; width:200px"></div>
         <br><br>
-        <div class="leaderboardtile" style="color: #f9f6f2; font-size: 22px; background: #000">9</div>
+        <div class="leaderboardtile" id="rank9" style="color: #f9f6f2; font-size: 22px; background: #000">9</div>
         <div class="leaderboardtile" id="leaderboard9" style="margin-left:6px; width:200px"></div>
         <br><br>
-        <div class="leaderboardtile" style="color: #f9f6f2; font-size: 18px; background: #000">10</div>
+        <div class="leaderboardtile" id="rank10" style="color: #f9f6f2; font-size: 18px; background: #000">10</div>
         <div class="leaderboardtile" id="leaderboard10" style="margin-left:6px; width:200px"></div>
         <br><br>
-        <div class="leaderboardtile" style="color: #f9f6f2; font-size: 13px; background: #F00">yours</div>
+        <div class="leaderboardtile" id="ranku" style="color: #f9f6f2; font-size: 18px; background: #000">yours</div>
         <div class="leaderboardtile" id="leaderboardu" style="margin-left:6px; width:200px"></div>
       </div>
     <div class="above-game">

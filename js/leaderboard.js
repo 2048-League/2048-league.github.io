@@ -13,5 +13,24 @@ fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
     document.getElementById('leaderboard' + (i + 1)).style.fontSize = (text.length < 18 ? 18 : 18 - (text.length - 18)) + 'px'; 
     document.getElementById('leaderboard' + (i + 1)).innerHTML = text;
     }
+    body.some((item, index) => {
+      if(item.username == localStorage.username) {
+        if(index < 10) {
+        let text = body[10].score + ' - ' + body[10].username;
+        document.getElementById('ranku').innerHTML = 11;
+        document.getElementById('leaderboardu').style.fontSize = (text.length < 18 ? 18 : 18 - (text.length - 18)) + 'px'; 
+        document.getElementById('rank' + (index + 1)).style.backgroundColor = '#F00';
+        document.getElementById('leaderboardu').innerHTML = text;   
+        } else {
+        let text = item.score + ' - ' + item.username;
+        document.getElementById('ranku').innerHTML = index + 1;
+        document.getElementById('leaderboardu').style.fontSize = (text.length < 18 ? 18 : 18 - (text.length - 18)) + 'px'; 
+        document.getElementById('ranku').style.backgroundColor = '#F00';
+        document.getElementById('leaderboardu').innerHTML = text;          
+        }
+        return true;
+      }
+      return false;
+    });
 });
 
