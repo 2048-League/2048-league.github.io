@@ -22,7 +22,6 @@ fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
       if(item.username == localStorage.username) {
         if(index < 10) {
         let text = body[10].score + ' - ' + body[10].username;
-        document.getElementById('ranku').innerHTML = 11;
         document.getElementById('leaderboardu').style.fontSize = (text.length < 18 ? 18 : 18 - (text.length - 18)) + 'px'; 
         document.getElementById('rank' + (index + 1)).style.backgroundColor = '#F00';
         document.getElementById('leaderboardu').innerHTML = text;   
