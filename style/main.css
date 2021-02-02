@@ -109,6 +109,41 @@ h1.title {
   margin-bottom: 5px;
 }
 
+.centered {
+  left: 0;
+  line-height: 100px;
+  margin-top: -100px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}
+
+.loginbutton {
+  position: absolute;
+  left: 150px;
+  top: 200px;
+}
+
+.signupbutton {
+  position: absolute;
+  right: 150px;
+  top: 200px;
+}
+
+.button {
+  background-color: #8f7a66;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 40px;
+  color: white;
+  width: 130px;
+  height: 40px;
+  border-radius: 6px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 #leaderboard:after {
   line-height: 6px;
   vertical-align: top;
