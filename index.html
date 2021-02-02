@@ -18,6 +18,9 @@
 </head>
 <body>
   <div class="container">
+    <h3> 
+      Hello, <p id="username"></p>
+    </h3>
     <div class="heading">
       <h1 class="title">2048</h1>
       <div class="scores-container">
@@ -28,7 +31,7 @@
     <div id="leaderboardbox">
         <div id="leaderboard"> </div>
         <div class="leaderboardtile" style="color: #f9f6f2; font-size: 22px; background: #000">1</div>
-        <div class="leaderboardtile" id="leaderboard1" style="margin-left:6px; width:159px"></div>
+        <div class="leaderboardtile" id="leaderboard1" style="margin-left:6px; width:200px"></div>
         <br><br>
         <div class="leaderboardtile" style="color: #f9f6f2; font-size: 22px; background: #000">2</div>
         <div class="leaderboardtile" id="leaderboard2" style="margin-left:6px; width:159px"></div>
@@ -105,7 +108,6 @@
 
       </div>
     </div>
-    <p><strong class="important">Warning:</strong> Do not open another 2048 League tab while you are in the middle of a game. This will reset your game as it is a defense against tab cheating.</p>
     <p class="game-explanation"></p>
     <p class="game-explanation">
       <strong class="important">How to play:</strong><br> Use your <strong>Arrow keys, WASD keys and/or HJKL keys</strong> to move the tiles. When two tiles with the same number touch, they <strong>merge into one!</strong> Use the <strong>R key</strong> to reset.
@@ -126,5 +128,9 @@
   <script src="js/local_storage_manager.js"></script>
   <script src="js/game_manager.js"></script>
   <script src="js/application.js"></script>
+    <script src="js/username.js"></script>
+  <script type="text/javascript">
+    window.history.replaceState(null, null, window.location.pathname);
+  </script>
 </body>
 </html>
