@@ -9,7 +9,9 @@ fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
   .then(res => res.json())
   .then(body => {
     for(var i = 0; i < 10; i++) {
-    document.getElementById('leaderboard' + (i + 1)).innerHTML = body[i] ? body[i].score + ' - ' + body[i].username : '';
+    let text = body[i] ? body[i].score + ' - ' + body[i].username : '';
+    document.getElementById('leaderboard' + (i + 1)).style.fontSize = (text.length < 18 ? 18 : 18 - (text.length - 18)) + 'px'; 
+    document.getElementById('leaderboard' + (i + 1)).innerHTML = text;
     }
 });
 

@@ -1,1 +1,0 @@
-document.getElementById("username").value = localStorage.getItem("username");
