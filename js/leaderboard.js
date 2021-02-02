@@ -8,6 +8,11 @@ fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
  })
   .then(res => res.json())
   .then(body => {
+    body = body.filter((item, index) => {
+      return !body.some((i,j) => {
+        return j < index && i.username == item.username;
+      });
+    });
     for(var i = 0; i < 10; i++) {
     let text = body[i] ? body[i].score + ' - ' + body[i].username : '';
     document.getElementById('leaderboard' + (i + 1)).style.fontSize = (text.length < 18 ? 18 : 18 - (text.length - 18)) + 'px'; 
