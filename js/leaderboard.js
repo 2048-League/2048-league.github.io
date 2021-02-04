@@ -3,6 +3,11 @@ const formatDate = (dateString) => {
   return new Date(dateString).toLocaleDateString(undefined, options)
 }
 
+const ctx = document.createElement('canvas').getContext('2d');
+const measureText = text => {
+  return ctx.measureText(text).width / 5.5;
+}
+
 fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
     method: 'GET'
  })
@@ -15,20 +20,21 @@ fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
     });
     for(var i = 0; i < 10; i++) {
     let text = body[i] ? body[i].score + ' - ' + body[i].username : '';
-    document.getElementById('leaderboard' + (i + 1)).style.fontSize = (text.length < 18 ? 18 : 18 - (text.length - 18)) + 'px'; 
+    document.getElementById('leaderboard' + (i + 1)).style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
     document.getElementById('leaderboard' + (i + 1)).innerHTML = text;
     }
+
     body.some((item, index) => {
       if(item.username == localStorage.username) {
         if(index < 10) {
-        let text = body[10].score + ' - ' + body[10].username;
-        document.getElementById('leaderboardu').style.fontSize = (text.length < 18 ? 18 : 18 - (text.length - 18)) + 'px'; 
+        let text = body[10] ? body[10].score + ' - ' + body[10].username : '';
+        document.getElementById('leaderboardu').style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
         document.getElementById('rank' + (index + 1)).style.backgroundColor = '#F00';
         document.getElementById('leaderboardu').innerHTML = text;   
         } else {
         let text = item.score + ' - ' + item.username;
         document.getElementById('ranku').innerHTML = index + 1;
-        document.getElementById('leaderboardu').style.fontSize = (text.length < 18 ? 18 : 18 - (text.length - 18)) + 'px'; 
+        document.getElementById('leaderboardu').style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
         document.getElementById('ranku').style.backgroundColor = '#F00';
         document.getElementById('leaderboardu').innerHTML = text;          
         }

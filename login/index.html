@@ -34,10 +34,15 @@
     <br>
     <input id="password" type="password" placeholder="password"></input>
     <br><br>
-    <div class="button" onclick="login()">
+    <a class="button" onclick="login()">
       <strong>Log in</strong>
-    </div>
+    </a>
   </div>
   <script src="login.js"></script>
+  <script type="text/javascript">
+    if(localStorage.username && localStorage.token) {
+      window.location.replace('../');
+    }
+  </script>
 </body>
 </html>

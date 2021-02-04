@@ -36,10 +36,15 @@
     <br>
     <input id="confirm-password" type="password" placeholder="Confirm Password"/>
     <br><br>
-    <button class="button" onclick="signup()">
+    <a class="button" onclick="signup()">
       <strong>Sign up</strong>
-    </button>
+    </a>
     <script src="signup.js"></script>
+    <script type="text/javascript">
+      if(localStorage.username && localStorage.token) {
+        window.location.replace('../');
+      }
+    </script>   
   </div>
 </body>
 </html>
