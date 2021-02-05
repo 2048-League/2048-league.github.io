@@ -1,3 +1,8 @@
+var leaderboardType = 'all';
+var colors = [];
+Array.from(document.getElementById('leaderboardbox').children).forEach((element, index) => {
+  colors[index] = element.style.backgroundColor;
+});
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "numeric", second: "numeric" }
   return new Date(dateString).toLocaleDateString(undefined, options)
@@ -8,16 +13,25 @@ const measureText = text => {
   return ctx.measureText(text).width / 5.5;
 }
 
+function leaderboard() {
 fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
     method: 'GET'
  })
   .then(res => res.json())
   .then(body => {
+    Array.from(document.getElementById('leaderboardbox').children).forEach((element, index) => {
+      element.style.backgroundColor = colors[index];
+    });
     body = body.filter((item, index) => {
       return !body.some((i,j) => {
         return j < index && i.username == item.username;
       });
     });
+    if(leaderboardType == 'day') {
+      body = body.filter((item) => (Date.now() - Date.parse(item.time)) < 86400000)
+    } else if(leaderboardType == 'week') {
+      body = body.filter((item) => (Date.now() - Date.parse(item.time)) < 86400000 * 7)
+    }
     for(var i = 0; i < 10; i++) {
     let text = body[i] ? body[i].score + ' - ' + body[i].username : '';
     document.getElementById('leaderboard' + (i + 1)).style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
@@ -43,4 +57,20 @@ fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
       return false;
     });
 });
+}
+leaderboard();
 
+function change() {
+  const el = document.getElementById('leaderboard');
+  if(!el.classList.length) {
+    el.classList.add('day');
+    leaderboardType = 'day';
+  } else if(el.classList[0] == 'day') {
+    el.classList.replace('day', 'week');
+    leaderboardType = 'week';
+  } else {
+    el.classList.remove('week');
+    leaderboardType = 'all';
+  }
+  leaderboard();
+}

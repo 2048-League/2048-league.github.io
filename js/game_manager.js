@@ -39,6 +39,8 @@ GameManager.prototype.log = function () {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({ "score": this.score, "token": localStorage.token, "username": localStorage.username})
+  }).then(res => {}).then(res => {
+  leaderboard();
   });
 };
 
@@ -162,7 +164,7 @@ GameManager.prototype.move = function (direction) {
   // 0: up, 1: right, 2: down, 3: left
   var self = this;
 
-  if (this.isGameTerminated()) return; // Don't do anything if the game's over
+  if (this.isGameTerminated() || !(localStorage.username && localStorage.token)) return; // Don't do anything if the game's over
 
   var cell, tile;
 

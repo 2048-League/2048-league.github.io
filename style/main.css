@@ -107,6 +107,10 @@ h1.title {
   text-align: center;
   margin-left: 15px;
   margin-bottom: 5px;
+  font-size: 18px;
+  line-height: 6px;
+  vertical-align: top;
+  pointer-events: none;
 }
 
 .centered {
@@ -152,11 +156,22 @@ h1.title {
 
 #leaderboard:after {
   line-height: 6px;
-  vertical-align: top;
-  font-size: 18px;
-  color: white;
+  top: 15px;
+  vertical-align: center;
+  font-size: 14px;
+  color: #eee4da;
   position: relative;
-  content: "Leaderboard"; }
+  cursor: pointer;
+  pointer-events: auto;
+  content: "All Time"; }
+
+#leaderboard.day:after {
+  content: "Past 24 Hours";
+}
+
+#leaderboard.week:after {
+  content: "Past Week";
+}
 
 #leaderboardbox{
   float:right;
