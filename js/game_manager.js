@@ -41,7 +41,7 @@ GameManager.prototype.log = function () {
   body: JSON.stringify({ "score": this.score, "token": localStorage.token, "username": localStorage.username})
   }).then(res => {}).then(res => {
   leaderboard();
-  });
+  }).catch(e => console.error(e));
 };
 
 // Restart the game
