@@ -1,4 +1,13 @@
-var leaderboardType = 'all';
+var leaderboardType = localStorage.getItem("leaderboardType")
+const el = document.getElementById('leaderboard');
+
+if (leaderboardType == 'day') {
+    el.classList.add('day')
+}
+if (leaderboardType == 'week') {
+  el.classList.add('week')
+}
+// var leaderboardType = 'all';
 var colors = [];
 Array.from(document.getElementById('leaderboardbox').children).forEach((element, index) => {
   colors[index] = element.style.backgroundColor;
@@ -33,24 +42,24 @@ fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
       body = body.filter((item) => (Date.now() - Date.parse(item.time)) < 86400000 * 7)
     }
     for(var i = 0; i < 10; i++) {
-    let text = body[i] ? body[i].score + ' - ' + body[i].username : '';
-    document.getElementById('leaderboard' + (i + 1)).style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
-    document.getElementById('leaderboard' + (i + 1)).innerHTML = text;
+      let text = body[i] ? body[i].score + ' - ' + body[i].username : '';
+      document.getElementById('leaderboard' + (i + 1)).style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
+      document.getElementById('leaderboard' + (i + 1)).innerHTML = text;
     }
 
     body.some((item, index) => {
       if(item.username == localStorage.username) {
         if(index < 10) {
-        let text = body[10] ? body[10].score + ' - ' + body[10].username : '';
-        document.getElementById('leaderboardu').style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
-        document.getElementById('rank' + (index + 1)).style.backgroundColor = '#F00';
-        document.getElementById('leaderboardu').innerHTML = text;   
+          let text = body[10] ? body[10].score + ' - ' + body[10].username : '';
+          document.getElementById('leaderboardu').style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
+          document.getElementById('rank' + (index + 1)).style.backgroundColor = '#F00';
+          document.getElementById('leaderboardu').innerHTML = text;   
         } else {
-        let text = item.score + ' - ' + item.username;
-        document.getElementById('ranku').innerHTML = index + 1;
-        document.getElementById('leaderboardu').style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
-        document.getElementById('ranku').style.backgroundColor = '#F00';
-        document.getElementById('leaderboardu').innerHTML = text;          
+          let text = item.score + ' - ' + item.username;
+          document.getElementById('ranku').innerHTML = index + 1;
+          document.getElementById('leaderboardu').style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
+          document.getElementById('ranku').style.backgroundColor = '#F00';
+          document.getElementById('leaderboardu').innerHTML = text;          
         }
         return true;
       }
@@ -72,5 +81,6 @@ function change() {
     el.classList.remove('week');
     leaderboardType = 'all';
   }
+  localStorage.setItem("leaderboardType", leaderboardType)
   leaderboard();
 }
