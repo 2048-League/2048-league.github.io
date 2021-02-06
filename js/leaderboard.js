@@ -2,7 +2,7 @@ var leaderboardType = localStorage.getItem("leaderboardType")
 const el = document.getElementById('leaderboard');
 
 if (leaderboardType == 'day') {
-    el.classList.add('day')
+  el.classList.add('day')
 }
 if (leaderboardType == 'week') {
   el.classList.add('week')
@@ -31,16 +31,16 @@ fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
     Array.from(document.getElementById('leaderboardbox').children).forEach((element, index) => {
       element.style.backgroundColor = colors[index];
     });
-    body = body.filter((item, index) => {
-      return !body.some((i,j) => {
-        return j < index && i.username == item.username;
-      });
-    });
     if(leaderboardType == 'day') {
       body = body.filter((item) => (Date.now() - Date.parse(item.time)) < 86400000)
     } else if(leaderboardType == 'week') {
       body = body.filter((item) => (Date.now() - Date.parse(item.time)) < 86400000 * 7)
     }
+    body = body.filter((item, index) => {
+      return !body.some((i,j) => {
+        return j < index && i.username == item.username;
+      });
+    });
     for(var i = 0; i < 10; i++) {
       let text = body[i] ? body[i].score + ' - ' + body[i].username : '';
       document.getElementById('leaderboard' + (i + 1)).style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
