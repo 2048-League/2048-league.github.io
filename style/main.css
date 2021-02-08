@@ -101,6 +101,14 @@ h1.title {
 .best-container:after {
   content: "Best"; }
 
+#header {
+  float: right;
+  position: absolute;
+  z-index: 1000;
+  right: 200px;
+  top: 50px;
+}
+
 #leaderboard {
   float:left;
   width: 198px;
