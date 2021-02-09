@@ -26,7 +26,12 @@ h1.title {
   font-weight: bold;
   margin: 0;
   display: block;
-  float: left; }
+  float: left; 
+  }
+  .league-title {
+      padding: 5px;
+  border-style: solid;
+  }
 
 @-webkit-keyframes move-up {
   0% {
