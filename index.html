@@ -25,11 +25,9 @@
     </div>
   </div>
   <div class="container" style="filter: blur(4px)">
-  <div id="header">
-    Ok
-  </div>
+    <div id="below-header">
     <div class="heading">
-      <h1 class="title league-title">2048 League</h1>
+      <h1 class="title">2048</h1>
       <div class="scores-container">
         <div class="score-container">0</div>
         <div class="best-container">0</div>
@@ -123,6 +121,9 @@
     <p>
     Created by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli.</a> Based on <a href="https://itunes.apple.com/us/app/1024!/id823499224" target="_blank">1024 by Veewo Studio</a> and conceptually similar to <a href="http://asherv.com/threes/" target="_blank">Threes by Asher Vollmer.</a>
     </p>
+    </div>
+  <div id="header">
+  </div>
   </div>
   <script src="js/leaderboard.js"></script>
   <script src="js/bind_polyfill.js"></script>
@@ -135,6 +136,38 @@
   <script src="js/local_storage_manager.js"></script>
   <script src="js/game_manager.js"></script>
   <script src="js/application.js"></script>
-  <script src="js/nologin.js"></script>
+  <script type="text/javascript">
+  if(localStorage.username && localStorage.token) {
+    
+    document.getElementById('nologin').style.visibility = 'hidden';
+    document.querySelector('.container').style.filter = '';
+    document.getElementById('below-header').style ="position: relative; top: 100px";
+    function loadHeader() {
+      if(!rank) {
+        setTimeout(loadHeader, 10);
+      } else {
+        document.getElementById('header').innerHTML = `
+        <div class="leaderboardtile" style="color: #f9f6f2; font-size: 22px; position: relative; bottom: 13px; margin-right: 12px; background: #${(() => {
+          switch(rank) {
+            case 1:
+              return 'deba07';
+              break;
+            case 2:
+              return 'c7c2a7';
+              break;
+            case 3:
+              return 'b88506';
+              break;
+            default:
+              return '000';
+          }
+        })()}">${rank}</div>
+        <strong>${localStorage.username}</strong>`;
+
+      }
+    }
+    loadHeader();
+  }
+  </script>
 </body>
 </html>

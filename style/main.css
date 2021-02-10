@@ -28,10 +28,6 @@ h1.title {
   display: block;
   float: left; 
   }
-  .league-title {
-      padding: 5px;
-  border-style: solid;
-  }
 
 @-webkit-keyframes move-up {
   0% {
@@ -108,10 +104,11 @@ h1.title {
 
 #header {
   float: right;
-  position: absolute;
+  position: relative;
   z-index: 1000;
-  right: 200px;
-  top: 50px;
+  right: 0px;
+  bottom: 900px;
+  font-size: 24px;
 }
 
 #leaderboard {

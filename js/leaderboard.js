@@ -1,3 +1,4 @@
+var rank;
 var leaderboardType = localStorage.getItem("leaderboardType")
 const el = document.getElementById('leaderboard');
 
@@ -9,6 +10,7 @@ if (leaderboardType == 'week') {
 }
 // var leaderboardType = 'all';
 var colors = [];
+
 Array.from(document.getElementById('leaderboardbox').children).forEach((element, index) => {
   colors[index] = element.style.backgroundColor;
 });
@@ -49,6 +51,7 @@ fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
 
     body.some((item, index) => {
       if(item.username == localStorage.username) {
+        rank = index + 1;
         if(index < 10) {
           let text = body[10] ? body[10].score + ' - ' + body[10].username : '';
           document.getElementById('leaderboardu').style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
