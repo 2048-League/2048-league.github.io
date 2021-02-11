@@ -106,8 +106,8 @@ h1.title {
   float: right;
   position: relative;
   z-index: 1000;
-  right: 0px;
-  bottom: 900px;
+  left: 13px;
+  bottom: 950px;
   font-size: 24px;
 }
 
