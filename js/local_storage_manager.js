@@ -21,6 +21,7 @@ window.fakeStorage = {
 function LocalStorageManager() {
   this.bestScoreKey     = "bestScore";
   this.gameStateKey     = "gameState";
+  this.movesKey         = "moves";
 
   var supported = this.localStorageSupported();
   this.storage = supported ? window.localStorage : window.fakeStorage;
@@ -37,6 +38,14 @@ LocalStorageManager.prototype.localStorageSupported = function () {
   } catch (error) {
     return false;
   }
+};
+
+LocalStorageManager.prototype.getMoves = function () {
+  return this.storage.getItem(this.movesKey) || 0;
+};
+
+LocalStorageManager.prototype.setMoves = function (moves) {
+  return this.storage.setItem(this.movesKey, moves);
 };
 
 // Best score getters/setters

@@ -71,11 +71,13 @@ GameManager.prototype.setup = function () {
     this.grid        = new Grid(previousState.grid.size,
                                 previousState.grid.cells); // Reload grid
     this.score       = previousState.score;
+    this.moves       = previousState.moves;
     this.over        = previousState.over;
     this.won         = previousState.won;
     this.keepPlaying = previousState.keepPlaying;
   } else {
     this.grid        = new Grid(this.size);
+    this.moves       = 0;
     this.score       = 0;
     this.over        = false;
     this.won         = false;
@@ -138,6 +140,7 @@ GameManager.prototype.serialize = function () {
     score:       this.score,
     over:        this.over,
     won:         this.won,
+    moves:       this.moves,
     keepPlaying: this.keepPlaying
   };
 };
@@ -159,10 +162,32 @@ GameManager.prototype.moveTile = function (tile, cell) {
   tile.updatePosition(cell);
 };
 
+// Calculate how many moves the player should have done
+GameManager.prototype.calcMoves = function () {
+  function maxScore(t) {
+    return t ? t * (Math.log2(t) - 2) + t : 0;
+  }
+  var total = 0;
+  var max = 0;
+  this.grid.cells.forEach(column => {
+    column.forEach(item => {
+      max += item ? maxScore(item.value) : 0;
+      total += item ? item.value : 0;
+    });
+  });
+
+  var diff = max - this.score;
+  return (diff / 4 + (total - diff) / 2) - 2;
+}
+
 // Move tiles on the grid in the specified direction
 GameManager.prototype.move = function (direction) {
   // 0: up, 1: right, 2: down, 3: left
   var self = this;
+  if(this.calcMoves() != this.moves) {
+    this.restart();
+    return;
+  }
 
   if (this.isGameTerminated() || !(localStorage.username && localStorage.token)) return; // Don't do anything if the game's over
 
@@ -213,6 +238,7 @@ GameManager.prototype.move = function (direction) {
   });
 
   if (moved) {
+    this.moves ++;
     this.addRandomTile();
 
     if (!this.movesAvailable()) {

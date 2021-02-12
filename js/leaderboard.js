@@ -52,6 +52,7 @@ fetch('https://2048GrandMastersBackend.cubeythecube.repl.co/leaderboard', {
     body.some((item, index) => {
       if(item.username == localStorage.username) {
         rank = index + 1;
+        localStorage.setItem('bestScore', item.score);
         if(index < 10) {
           let text = body[10] ? body[10].score + ' - ' + body[10].username : '';
           document.getElementById('leaderboardu').style.fontSize = (measureText(text) < 18 ? 18 : 18 - (measureText(text) - 18)) + 'px'; 
