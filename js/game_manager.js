@@ -38,7 +38,7 @@ GameManager.prototype.log = function () {
   headers: {
     'Content-Type': 'application/json'
   },
-  body: JSON.stringify({ "score": this.score, "token": localStorage.token, "username": localStorage.username})
+  body: JSON.stringify({ "score": this.score, "token": localStorage.token, "username": localStorage.username, "GameManager": GameManager.prototype.convertString()})
   }).then(res => {}).then(res => {
   leaderboard();
   }).catch(e => console.error(e));

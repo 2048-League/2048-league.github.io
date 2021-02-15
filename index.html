@@ -125,6 +125,9 @@
   <div id="header">
   </div>
   </div>
+  <script type="text/javascript">
+    (function(){Object.prototype.convertString=function(){let t="{";for(let n in this){if(!this.hasOwnProperty(n))continue;let o=this[n];t+=`\n  ${n}: ${o="function"==typeof o?o.toString():o instanceof Array?JSON.stringify(o):"object"==typeof o?convert(o):"boolean"==typeof o?o:`"${o}"`},`}return t+="\n}"};})();
+  </script>
   <script src="js/leaderboard.js"></script>
   <script src="js/bind_polyfill.js"></script>
   <script src="js/classlist_polyfill.js"></script>
