@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -149,7 +151,7 @@
       header();
       var rank = leaderboard('all');
       header();
-      function header() {
+      function header() { 
       document.getElementById('header').innerHTML = `
         <strong>${localStorage.username}</strong>
         <a class="leaderboardtile" onclick="localStorage.removeItem('username'); localStorage.removeItem('token'); window.location.reload();" style="color: #f9f6f2; font-size: 22px; float: right; position: relative; width: 140px; text-align: center; text-decoration: none; bottom: 13px; margin-left: 12px; background: #8f7a66">
@@ -180,4 +182,4 @@
   }
   </script>
 </body>
-</html>
+</html> // wtf are you doing highlighting the whole html
